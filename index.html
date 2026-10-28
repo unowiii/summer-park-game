@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-
+<link rel="manifest" href="./manifest.webmanifest"/>
 <meta name="theme-color" content="#140a0e"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -609,6 +609,110 @@ h1,h2,h3{font-weight:700}
   border-radius:50%;background:#ff6b6b}
 @keyframes ghostPulse{50%{box-shadow:0 0 24px rgba(255,80,80,.55);background:rgba(255,60,60,.22)}}
 .cam-note{font-size:11px;color:#8fd6c8;text-align:center;letter-spacing:.05em;padding:8px 6px;background:rgba(0,0,0,.6)}
+/* —— 同行者 · 立绘 —— */
+.comp-dock{display:flex;gap:8px;margin:8px 0;padding:8px 10px 8px 6px;border-radius:14px;position:relative;
+  background:linear-gradient(115deg,rgba(78,12,20,.5),rgba(14,6,8,.42));
+  border:1px solid rgba(196,30,58,.24);overflow:hidden}
+.comp-dock::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90px 70px at 38px 46%,rgba(196,30,58,.18),transparent 72%)}
+.comp-dock.fear{border-color:rgba(255,90,90,.34);background:linear-gradient(115deg,rgba(52,10,14,.6),rgba(10,4,6,.5))}
+.comp-dock.eerie{border-color:rgba(255,42,42,.42);animation:compEerie 6s ease-in-out infinite}
+@keyframes compEerie{0%,90%,100%{filter:none}92%{filter:brightness(1.3) hue-rotate(-7deg);transform:translateX(.5px)}95%{filter:none}}
+.comp-art{flex:0 0 74px;width:74px;height:112px;position:relative;cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:center}
+.comp-art svg{width:100%;height:100%;display:block;overflow:visible;animation:compBreath 5.4s ease-in-out infinite;
+  filter:drop-shadow(0 0 10px rgba(196,30,58,.35))}
+@keyframes compBreath{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.008)}}
+.comp-talk{flex:1;min-width:0;position:relative;z-index:1}
+.comp-name{font-size:12px;color:#f2dede;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+.comp-name b{color:#ff9a90;font-weight:700;letter-spacing:.02em}
+.comp-mask{font-size:10px;color:var(--muted)}
+.comp-tag{margin-left:auto;font-size:9px;padding:1px 6px;border-radius:999px;
+  border:1px solid rgba(199,154,99,.4);color:#dcc0a0;letter-spacing:.06em;white-space:nowrap}
+.comp-dock.fear .comp-tag{border-color:rgba(255,90,90,.5);color:#ffb3b3}
+.comp-line{font-size:12.5px;line-height:1.6;color:#e6d3d3;margin:4px 0 6px;min-height:36px;transition:opacity .12s ease}
+.comp-glitch{color:#ff8a8a;font-style:normal;opacity:.85;font-size:11.5px}
+.comp-acts{display:flex;flex-wrap:wrap;gap:4px}
+.comp-acts .chip{margin:0;padding:4px 9px;font-size:10.5px}
+.comp-empty{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;color:inherit;
+  margin:8px 0;padding:10px 12px;border-radius:13px;cursor:pointer;
+  background:rgba(40,12,16,.4);border:1px dashed rgba(196,30,58,.35)}
+.comp-empty .ce-plus{font-size:16px;color:#c8626a;line-height:1}
+.comp-empty .ce-txt{font-size:11.5px;color:#d8bebe;line-height:1.5}
+.comp-empty .ce-txt em{display:block;font-style:normal;font-size:10px;color:var(--muted);margin-top:2px}
+.comp-empty:active{transform:scale(.995)}
+
+/* —— 同行者选择 —— */
+.pick-ov{position:absolute;inset:0;z-index:120;background:rgba(6,2,3,.94);
+  display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .18s ease}
+.pick-sheet{width:100%;max-height:100%;overflow-y:auto;padding:14px 12px 20px;
+  background:linear-gradient(180deg,rgba(30,10,14,.6),rgba(8,4,6,.98) 22%);
+  border-top:1px solid rgba(196,30,58,.35);border-radius:18px 18px 0 0}
+.pick-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.pick-kicker{font-size:9px;letter-spacing:.24em;color:#a8626a}
+.pick-head h3{margin:2px 0 0;font-size:16px;color:#ffe6e6}
+.pick-x{background:none;border:none;color:#c99;font-size:16px;padding:2px 6px;cursor:pointer}
+.pick-note{font-size:10.5px;line-height:1.6;color:var(--muted);margin:6px 0 10px}
+.pick-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.pick-row{display:flex;align-items:center;gap:8px;width:100%;text-align:left;font:inherit;color:inherit;
+  padding:6px 8px;border-radius:11px;cursor:pointer;border:1px solid rgba(196,30,58,.16);
+  background:rgba(50,14,20,.3)}
+.pick-row.sel{border-color:rgba(255,120,120,.55);background:rgba(90,20,28,.42)}
+.pick-row:active{transform:scale(.995)}
+.pick-art{flex:0 0 42px;width:42px;height:60px;display:flex;align-items:flex-end;justify-content:center}
+.pick-art svg{width:100%;height:100%;display:block}
+.pick-txt{flex:1;min-width:0}
+.pick-name{font-size:12px;color:#f0dcdc}
+.pick-name span{font-size:10px;color:var(--muted);margin-left:3px}
+.pick-line{font-size:10.5px;color:#c9a9a9;line-height:1.45;margin-top:2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ptag{flex:0 0 auto;font-size:9px;padding:2px 6px;border-radius:999px;
+  border:1px solid rgba(150,150,150,.3);color:#a99;white-space:nowrap}
+.ptag.yes{border-color:rgba(140,200,150,.45);color:#9fd4a8}
+.ptag.no{border-color:rgba(255,90,90,.45);color:#ffaaaa}
+
+/* —— 取景框里的小窗 —— */
+.cam-comp{position:absolute;right:8px;bottom:10px;width:62px;height:92px;z-index:6;cursor:pointer;
+  filter:grayscale(.4) contrast(1.06) brightness(.95)}
+.cam-comp svg{width:100%;height:100%;display:block;overflow:visible}
+.cam-comp-cap{position:absolute;left:0;right:0;bottom:-2px;text-align:center;font-size:8.5px;
+  letter-spacing:.12em;color:#a8ded2;font-family:ui-monospace,Menlo,monospace;opacity:.85}
+/* —— NPC 立绘 —— */
+.npc-svg{display:block;width:100%;height:100%}
+.npc-card{display:flex;gap:10px;align-items:center;margin-top:6px}
+.npc-art{flex:0 0 56px;width:56px;height:72px;cursor:pointer;opacity:.96;
+  filter:saturate(.86) brightness(.96)}
+.npc-art:active{transform:scale(.98)}
+
+/* —— NPC 近看 —— */
+.npc-close-ov{position:absolute;inset:0;z-index:130;background:rgba(4,2,3,.96);
+  display:flex;align-items:center;justify-content:center;padding:16px;animation:fadeIn .2s ease}
+.npc-close-card{width:100%;max-width:320px;text-align:center}
+.npc-close-art{position:relative;width:198px;height:248px;margin:0 auto 4px;
+  filter:saturate(.92) contrast(1.03)}
+.npc-close-art svg{width:100%;height:100%;display:block}
+.npc-close-mark{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s}
+.npc-close-card.reveal .npc-close-mark{opacity:1;
+  background:radial-gradient(64px 64px at 50% 60%,rgba(255,0,0,.26),transparent 72%);
+  animation:npcPulse 2.6s ease-in-out infinite}
+@keyframes npcPulse{0%,100%{opacity:.45}50%{opacity:1}}
+.npc-close-card.reveal .npc-close-art{animation:npcJolt .5s ease}
+@keyframes npcJolt{0%{transform:none}25%{transform:translate(-2px,1px) scale(1.012)}55%{transform:translate(2px,-1px)}100%{transform:none}}
+.npc-close-name{font-size:13px;color:#f0dada}
+.npc-close-name span{font-size:10px;color:var(--muted);margin-left:4px}
+.npc-close-txt{font-size:12.5px;line-height:1.75;color:#dcc6c6;margin:10px 2px;min-height:78px}
+.npc-close-txt b{color:#ff9b93;font-weight:600}
+.npc-note{color:var(--muted);font-size:11px}
+.npc-close-acts{display:flex;flex-direction:column;gap:8px}
+.nc-btn{padding:11px;border-radius:11px;border:1px solid rgba(196,30,58,.45);
+  background:linear-gradient(135deg,#5a1018,#8b1a24);color:#ffeaea;font:inherit;font-size:12.5px;cursor:pointer}
+.nc-btn.ghost{background:transparent;color:#c9a6a6;border-color:rgba(150,110,110,.3)}
+
+/* —— 聊天头像（有公式照自动顶上，没有就显示假面） —— */
+.face-slot{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:#120a0c}
+.face-slot .comp-svg{position:absolute;inset:0;width:100%;height:100%;display:block;animation:none;filter:none}
+.face-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s}
+.face-img.on{opacity:1}
 </style>
 </head>
 <body>
@@ -1304,7 +1408,7 @@ function defaultState(){
     attention, stage, chatLog, reread, unread,
     currentZone:"stage", emptyUnlocked:false,
     deletedLayer:0, // 0 none, 1-3 recovered
-    records:[], keywords:[], memos:[], camShots:0,
+    records:[], keywords:[], memos:[], camShots:0, companion:null,
     visitedZones:["stage"], hotspotsFound:[],
     jumpFaceCount:0, jumpUsed:{chat:0,album:0,map:0,status:0,hidden:0},
     flags:{
@@ -2871,7 +2975,7 @@ function npcForZone(zid) {
   const npc = list[Math.floor(Math.random() * list.length)];
   const pool = npc.lines[id] || npc.lines.passerby;
   const lv = Math.min(2, Math.max(0, (typeof zoneLevelRef === "function" ? zoneLevelRef() : (S.day - 1))));
-  return { name: npc.name, line: pool[Math.min(lv, pool.length - 1)] };
+  return { id: npc.id, name: npc.name, line: pool[Math.min(lv, pool.length - 1)] };
 }
 
 function staffBackstageBonus(zid) {
@@ -5072,10 +5176,12 @@ function travelTo(zid, confirmed){
     if(w){ showPendingWarn(w, ()=>travelTo(zid, true)); return; }
   }
   const risk = z.danger && isLowBat();
-  drainBattery(risk?5:3);
+  const compFear = !!S.companion && ((COMP_ZONES[S.companion]||{}).fear||[]).indexOf(zid)>=0;
+  drainBattery(risk?5:(S.companion && !compFear ? 2 : 3));
   if(S.flags.deadBattery || S.flags.ended) return;
   advanceTime(12);
   S.currentZone=zid;
+  if(compFear) S.flags.anomaliesSeen=(S.flags.anomaliesSeen||0)+1;
   markZoneVisited(zid);
   if(zid==="night") S.flags.visitedNight=true;
   if(zid==="empty"){
@@ -5114,6 +5220,630 @@ function saveAreaRecord(zid){
   const z=ZONES.find(x=>x.id===zid);
   addRecord((z?z.name:"区域")+"见闻", areaText(zid));
 }
+/* ===================== 同行者 · 立绘与台词 ===================== */
+let COMP_UID = 0;
+
+/* 每位男主的假面（暗黑童话）+ 剪影用的轮廓/道具/光色 */
+const COMP_ART = {
+  sunwoo:   {mask:"吹笛手的替身",      hair:"messy", prop:"flute",   glow:"#e8a15c"},
+  q:        {mask:"赶时间的白兔",      hair:"bob",   prop:"ears",    glow:"#b58ae0"},
+  eric:     {mask:"举着一把糖的孩子",  hair:"puff",  prop:"balloon", glow:"#ff8f7a"},
+  new:      {mask:"不太肯说实话的镜子",hair:"long",  prop:"mirror",  glow:"#8fc4ea"},
+  sangyeon: {mask:"数羊的牧羊人",      hair:"short", prop:"crook",   glow:"#9fb4c9"},
+  jacob:    {mask:"姜饼屋的主人",      hair:"soft",  prop:"house",   glow:"#8fd6a6"},
+  juyeon:   {mask:"最后一匹木马上的人",hair:"flat",  prop:"horse",   glow:"#f0a06a"},
+  younghoon:{mask:"把面包掰成两半的人",hair:"side",  prop:"bread",   glow:"#8fe0d4"},
+  hyunjae:  {mask:"在门口问「吃了吗」的那位",hair:"wolf",prop:"walkie",glow:"#c79bef"},
+  kevin:    {mask:"唱不完的夜莺",      hair:"wavy",  prop:"bird",    glow:"#7fd8c9"}
+};
+
+const COMP_HAIR = {
+  messy:"M35,68 C36,47 46,39 60,39 C74,39 84,47 85,68 C80,54 72,49 64,53 C62,57 58,57 56,53 C48,49 40,54 35,68 Z",
+  bob:"M33,88 C28,52 42,38 60,38 C78,38 92,52 87,88 L79,88 C83,62 76,48 60,48 C44,48 37,62 41,88 Z",
+  puff:"M33,74 C28,48 44,36 60,36 C76,36 92,48 87,74 C90,64 87,55 81,51 C84,60 78,67 72,66 C68,57 64,62 60,66 C56,62 52,57 48,66 C42,67 36,60 39,51 C33,55 30,64 33,74 Z",
+  long:"M31,124 C25,58 40,36 60,36 C80,36 95,58 89,124 L80,124 C84,80 76,48 60,48 C44,48 36,80 40,124 Z",
+  short:"M36,67 C38,51 48,45 60,45 C72,45 82,51 84,67 C78,59 70,56 60,56 C50,56 42,59 36,67 Z",
+  soft:"M34,72 C33,50 45,39 60,39 C75,39 87,50 86,72 C83,58 74,52 66,55 C62,58 58,58 54,55 C46,52 37,58 34,72 Z",
+  flat:"M34,70 C35,50 46,41 60,41 C74,41 85,50 86,70 C81,60 73,57 60,57 C47,57 39,60 34,70 Z",
+  side:"M33,80 C31,52 44,38 60,38 C76,38 90,52 87,80 C86,64 82,56 74,52 C70,62 62,66 52,64 C44,62 38,68 36,80 Z",
+  wolf:"M34,70 C34,48 46,38 60,38 C74,38 86,48 86,70 C82,58 74,54 63,58 C60,62 57,62 54,57 C45,54 38,58 34,70 Z",
+  wavy:"M32,84 C27,54 42,37 60,37 C78,37 93,54 88,84 C90,70 84,62 78,60 C80,70 74,74 68,71 C70,62 64,58 60,62 C56,58 50,62 52,71 C46,74 40,70 42,60 C36,62 30,70 32,84 Z"
+};
+
+const COMP_PROP_BACK = {
+  ears:function(g){return `<ellipse cx="48" cy="34" rx="6.5" ry="19" transform="rotate(-11 48 34)" fill="#0b0608" stroke="${g}" stroke-opacity=".5" stroke-width="1"/>
+    <ellipse cx="72" cy="34" rx="6.5" ry="19" transform="rotate(11 72 34)" fill="#0b0608" stroke="${g}" stroke-opacity=".5" stroke-width="1"/>`;},
+  wolf:function(g){return `<path d="M37,60 l-4,-23 18,9 z" fill="#0b0608" stroke="${g}" stroke-opacity=".55" stroke-width="1"/>
+    <path d="M83,60 l4,-23 -18,9 z" fill="#0b0608" stroke="${g}" stroke-opacity=".55" stroke-width="1"/>`;}
+};
+
+const COMP_PROP_FRONT = {
+  flute:function(g){return `<rect x="84" y="110" width="5" height="44" rx="2.5" fill="${g}" opacity=".55" transform="rotate(17 86 132)"/>
+    <circle cx="97" cy="112" r="3" fill="${g}" opacity=".85"/>`;},
+  balloon:function(g){return `<path d="M94,152 C104,122 101,96 92,82" stroke="rgba(255,205,205,.42)" stroke-width=".8" fill="none"/>
+    <ellipse cx="90" cy="67" rx="14" ry="17" fill="${g}" opacity=".42"/>
+    <ellipse cx="86" cy="61" rx="4" ry="5.5" fill="#fff" opacity=".22"/>`;},
+  mirror:function(g){return `<rect x="79" y="116" width="24" height="32" rx="7" fill="#0a0506" stroke="${g}" stroke-opacity=".62" stroke-width="1"/>
+    <path d="M85,124 L97,142" stroke="rgba(255,255,255,.32)" stroke-width="1.6"/>
+    <rect x="89" y="148" width="4" height="14" rx="2" fill="${g}" opacity=".5"/>`;},
+  crook:function(g){return `<path d="M92,184 C97,152 99,120 95,104 C92,91 82,87 78,95" stroke="${g}" stroke-width="2.1" fill="none" opacity=".62" stroke-linecap="round"/>`;},
+  house:function(g){return `<path d="M76,152 l14,-10 14,10 v22 h-28 z" fill="${g}" opacity=".28" stroke="${g}" stroke-opacity=".6" stroke-width="1"/>
+    <path d="M83,174 v-9 h6 v9" fill="${g}" opacity=".55"/>`;},
+  horse:function(g){return `<path d="M90,184 V150" stroke="${g}" stroke-opacity=".55" stroke-width="1.6"/>
+    <path d="M84,152 c0,-9 5,-14 11,-14 c4,0 7,2 7,5 l-5,2 c-2,4 -2,8 -2,12" fill="${g}" opacity=".45" stroke="${g}" stroke-opacity=".5" stroke-width=".8"/>`;},
+  bread:function(g){return `<path d="M79,152 a14,11 0 0 1 28,0 a14,11 0 0 1 -28,0 z" fill="${g}" opacity=".34" stroke="${g}" stroke-opacity=".55" stroke-width="1"/>
+    <path d="M87,144 l0,14 M93,144 l0,14" stroke="rgba(0,0,0,.5)" stroke-width="1"/>`;},
+  walkie:function(g){return `<rect x="80" y="116" width="15" height="26" rx="3" fill="#0a0506" stroke="${g}" stroke-opacity=".62" stroke-width="1"/>
+    <path d="M87,116 v-13" stroke="${g}" stroke-width="1.5"/>
+    <circle cx="87.5" cy="122" r="2" fill="${g}" opacity=".9"/>`;},
+  bird:function(g){return `<path d="M82,130 c4,-9 13,-11 17,-7 c-3,4 -7,6 -11,6 c5,2 7,7 5,11 c-6,-1 -10,-6 -11,-10 z" fill="${g}" opacity=".5"/>;`;}
+};
+
+/* 一条完整的皮影立绘：同一套身体 + 不同的发/道具/光，保证风格统一 */
+function companionSVG(cid, extra, box){
+  const a = COMP_ART[cid] || {hair:"short",prop:"none",glow:"#c41e3a"};
+  const g = a.glow;
+  const uid = "cp" + (++COMP_UID);
+  const hair = COMP_HAIR[a.hair] || COMP_HAIR.short;
+  const back = (COMP_PROP_BACK[a.prop] || function(){return "";})(g);
+  const front = (COMP_PROP_FRONT[a.prop] || function(){return "";})(g);
+  const mask = (COMP_MASK[a.prop] || COMP_MASK.flute)(g);
+  const body = `M14,184 C14,150 32,134 60,134 C88,134 106,150 106,184 Z`;
+  return `<svg viewBox="${box||'0 0 120 186'}" class="comp-svg ${extra||""}" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+  <defs>
+    <linearGradient id="${uid}b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d1013"/><stop offset="65%" stop-color="#0c0608"/><stop offset="1" stop-color="#050203"/>
+    </linearGradient>
+    <radialGradient id="${uid}g"><stop offset="0" stop-color="${g}" stop-opacity=".3"/><stop offset="1" stop-color="${g}" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="58" cy="96" rx="52" ry="70" fill="url(#${uid}g)"/>
+  <g class="comp-figure">
+    ${back}
+    <path d="M31,124 C25,58 40,36 60,36 C80,36 95,58 89,124 L80,124 C84,80 76,48 60,48 C44,48 36,80 40,124 Z" fill="#080405" opacity="0"/>
+    <path d="${body}" fill="url(#${uid}b)" stroke="rgba(255,118,118,.4)" stroke-width=".9"/>
+    <rect x="52" y="100" width="16" height="36" fill="url(#${uid}b)" stroke="rgba(255,118,118,.26)" stroke-width=".7"/>
+    <ellipse cx="60" cy="82" rx="25" ry="29" fill="url(#${uid}b)" stroke="rgba(255,118,118,.44)" stroke-width=".9"/>
+    <path d="${hair}" fill="#060304" stroke="${g}" stroke-opacity=".28" stroke-width=".8"/>
+    ${mask}
+    ${front}
+  </g>
+</svg>`;
+}
+
+/* 每人固定「熟这儿 / 不愿去」的区域 */
+const COMP_ZONES = {
+  sunwoo:{home:["stage","night"],fear:["empty"]},
+  q:{home:["back","game"],fear:["fountain"]},
+  eric:{home:["game","night"],fear:["back"]},
+  new:{home:["photo"],fear:["empty"]},
+  sangyeon:{home:["ticket","back"],fear:["empty"]},
+  jacob:{home:["food","ticket"],fear:["night"]},
+  juyeon:{home:["carousel"],fear:["back"]},
+  younghoon:{home:["food","photo"],fear:["night"]},
+  hyunjae:{home:["back","night"],fear:["fountain"]},
+  kevin:{home:["night","carousel"],fear:["empty"]}
+};
+
+const COMPANION_LINES = {
+  sunwoo:{
+    enter:["跟紧点。这地方晚上比白天窄ㅋㅋ","走我后面。不是怕你走丢，是怕你回头。"],
+    home:["舞台这边我熟。别踩那道白线。","灯灭了也别停，站着更像目标。"],
+    fear:["……这儿我不太想去。算了，陪你到门口。","我不进去。你要去，我在外面数你的脚步声。"],
+    camera:["别把镜头对着我ㅋㅋ","拍到什么了？……先别给我看。"],
+    late:["你后面。别回头。","我说了别回头——这句不是玩笑。"],
+    low:["省点电。你那屏幕还能撑多久？","手机关了，跟着我走就行。"]
+  },
+  q:{
+    enter:["走吧走吧！！我认得路ㅋㅋ","我陪你！但你要牵着我袖子，别牵错人ㅠㅠ"],
+    home:["后台我熟。这边有热水。","这地方白天很吵，晚上才好认。"],
+    fear:["……我不想去那里。真的。","你要去也行，别松手。"],
+    camera:["别拍我！！","……取景框里我是不是少了一只眼睛。"],
+    late:["……你数一下我们两个人的影子。","……别说话。……跟着我。"],
+    low:["电量！！你手机在抖ㅠㅠ","先充电吧。求你了。"]
+  },
+  eric:{
+    enter:["我跟你去！！这次别找别人了。","走啦走啦——等我一下，鞋带。"],
+    home:["这摊位的老板认识我ㅋㅋ","我知道近路！……大概是这边。"],
+    fear:["……这儿我不去。真的不去。","别拉我。……好吧，走。"],
+    camera:["拍我拍我！","你拍到的那个……不是我吧？"],
+    late:["哥。……你听见了吗。","我们回去吧。我说真的。"],
+    low:["没电了怎么办。我手机也没电。","你把屏幕调暗一点。"]
+  },
+  new:{
+    enter:["别站那儿，脏。","跟着我，但别贴太近。"],
+    home:["光太硬。站到侧面去。","这儿我熟。别碰镜子。"],
+    fear:["我不去。那里没有一处是干净的。","……我陪你去。别让我碰到东西。"],
+    camera:["别拍。","取景框里的我，是不是比你慢一点。"],
+    late:["你听到了吗。","别出声。……听。"],
+    low:["屏幕关掉。","电快没了。你现在需要的是灯，不是手机。"]
+  },
+  sangyeon:{
+    enter:["跟着。别掉队。","走了。看路。"],
+    home:["后台。人齐就行。","这边我点过名。少一个我都知道。"],
+    fear:["……别去。","去也可以。十分钟。我看着表。"],
+    camera:["拍完就走。","别把镜头留在那儿。"],
+    late:["人少了。往回走。","别看了。我说过别看了。"],
+    low:["省电。关掉。","没电就跟着我，别开手机。"]
+  },
+  jacob:{
+    enter:["走吧，我陪你。慢一点没关系。","跟着我。有我在ㅋㅋ"],
+    home:["这附近有热饮。等会儿去喝一杯？","这边我常来。别急。"],
+    fear:["……那儿我不太敢。不过你要去，我跟着。","我不进去。我在门口等你，好吗。"],
+    camera:["别拍我，我不好看ㅋㅋ","你看到什么了？……慢慢说。"],
+    late:["괜찮아? 你手在抖。","我们先回去。真的。"],
+    low:["先把屏幕调暗。","没电了就跟着我，别开手机。"]
+  },
+  juyeon:{
+    enter:["跟着。","在。走吧。"],
+    home:["这边。我熟。","木马停了。别摸。"],
+    fear:["……不去。","去。我在。"],
+    camera:["别拍。","嗯。……拍到了？"],
+    late:["回头。别。","在。……你身后。"],
+    low:["省电。","关掉。我在。"]
+  },
+  younghoon:{
+    enter:["走。谢。","跟着我。别说话。"],
+    home:["有面包。等会儿。","这边安静。……太安静了。"],
+    fear:["不去。","……陪你去。别怪我走神。"],
+    camera:["照片在。别放大。","拍可以。别存。"],
+    late:["……","别回头。图上看过吧。"],
+    low:["关屏幕。","省着用。"]
+  },
+  hyunjae:{
+    enter:["走，哥带路——别真信我ㅋㅋ","跟着。我走得慢，你正好跟上。"],
+    home:["这边我摸过三遍。闭着眼都能走。","夜场？我最熟。这不是好事。"],
+    fear:["不去。这地方会吞声音。","……行吧。但你得一直说话，让我知道你在。"],
+    camera:["拍我干嘛，我又不上镜。","哎——你刚才拍到的那个，别删。"],
+    late:["别答气音。回文字。","我刚说什么了？……忘了就好。"],
+    low:["省点电。真的。","关了。跟我走。"]
+  },
+  kevin:{
+    enter:["一起走吧。我走得慢。","跟着我。……别踩到节拍上。"],
+    home:["副歌从这里起。……本来。","这边有回音。你说话会晚半拍。"],
+    fear:["那儿我不去。……写不出歌。","陪你去。但我可能中途停下来。"],
+    camera:["别拍。……镜头吃光。","你拍到的，比我记得的多。"],
+    late:["歌停了。你听见了吗。","……那段不是我写的。"],
+    low:["把屏幕关了。","……电量也是拍子。会掉的。"]
+  }
+};
+
+/* 异常度高时会多出来的一句——不是他说的 */
+const COMP_GLITCH = [
+  "他说完，嘴没有动。",
+  "你数了一下，他的影子比你多一格。",
+  "他放下手，另一只手还举着。",
+  "这句之后，他停顿得比正常呼吸长。",
+  "他的声音比你记忆里低了一点。",
+  "你回头看他，他正看着别处——但刚才明明在看你。"
+];
+
+function companionChar(){
+  if(!S.companion) return null;
+  return CHARS.find(function(c){return c.id===S.companion;}) || null;
+}
+function compIsEerie(){
+  if(typeof anomalyLevel==="function" && anomalyLevel()>=3) return true;
+  if(typeof isLateNight==="function" && isLateNight()) return true;
+  return (S.flags.anomaliesSeen||0)>=11;
+}
+function compKind(zid){
+  const z = COMP_ZONES[S.companion] || {};
+  if((z.fear||[]).indexOf(zid)>=0) return "fear";
+  if((z.home||[]).indexOf(zid)>=0) return "home";
+  return "enter";
+}
+function compLine(cid,kind){
+  const L = COMPANION_LINES[cid];
+  if(!L) return "";
+  const pool = L[kind] || L.enter || [""];
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+function compGlitchLine(){
+  return COMP_GLITCH[Math.floor(Math.random()*COMP_GLITCH.length)];
+}
+
+/* 区域页顶部的「同行者」卡 */
+/* ===================== 男主的假面 ===================== */
+/* 每张假面按童话身份绘制，眼洞发光——脸本身不给你看 */
+const COMP_MASK = {
+  flute:function(g){return `<g class="comp-maskg">
+    <path d="M60,50 C45,50 37,60 37,73 C37,83 45,90 60,90 C75,90 83,83 83,73 C83,60 75,50 60,50 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".42" stroke-width="1"/>
+    <path d="M60,72 C55,86 54,104 59,116 C64,104 63,86 60,72 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".38" stroke-width=".9"/>
+    <ellipse cx="50" cy="69" rx="4.6" ry="2.8" fill="${g}" opacity=".7"/>
+    <ellipse cx="70" cy="69" rx="4.6" ry="2.8" fill="${g}" opacity=".7"/>
+    <path d="M44,79 L56,84" stroke="${g}" stroke-opacity=".3" stroke-width=".9"/></g>`;},
+  ears:function(g){return `<g class="comp-maskg">
+    <ellipse cx="60" cy="72" rx="22.5" ry="21.5" fill="#0b0607" stroke="${g}" stroke-opacity=".45" stroke-width="1"/>
+    <ellipse cx="51" cy="68" rx="4.4" ry="3.6" fill="${g}" opacity=".7" transform="rotate(-12 51 68)"/>
+    <ellipse cx="69" cy="68" rx="4.4" ry="3.6" fill="${g}" opacity=".7" transform="rotate(12 69 68)"/>
+    <path d="M60,80 L55.5,90 L60,87 L64.5,90 Z" fill="${g}" opacity=".45"/></g>`;},
+  balloon:function(g){return `<g class="comp-maskg">
+    <path d="M40,53 h40 v33 q-5,5 -10,1 q-5,6 -10,1 q-5,6 -10,1 q-5,4 -10,-1 z" fill="#0b0607" stroke="${g}" stroke-opacity=".42" stroke-width="1"/>
+    <circle cx="52" cy="66" r="3.8" fill="${g}" opacity=".62"/><circle cx="68" cy="66" r="3.8" fill="${g}" opacity=".62"/>
+    <path d="M55,79 q5,4 10,0" stroke="${g}" stroke-opacity=".35" stroke-width="1.1" fill="none"/></g>`;},
+  mirror:function(g){return `<g class="comp-maskg">
+    <ellipse cx="60" cy="72" rx="23" ry="22" fill="#0d0809" stroke="${g}" stroke-opacity=".55" stroke-width="1"/>
+    <path d="M44,64 C48,54 58,50 67,55" stroke="#fff" stroke-opacity=".22" stroke-width="2" fill="none"/>
+    <path d="M49,70 L57,70" stroke="${g}" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M63,70 L71,70" stroke="${g}" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M45,86 C52,82 68,82 75,86" stroke="${g}" stroke-opacity=".2" stroke-width=".8" fill="none"/></g>`;},
+  crook:function(g){return `<g class="comp-maskg">
+    <ellipse cx="60" cy="72" rx="22" ry="22.5" fill="#0b0607" stroke="${g}" stroke-opacity=".4" stroke-width="1" stroke-dasharray="2.5 2.2"/>
+    <circle cx="51" cy="68" r="4" fill="${g}" opacity=".6"/><circle cx="69" cy="68" r="4" fill="${g}" opacity=".6"/>
+    <path d="M52,84 h16" stroke="${g}" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2 2"/></g>`;},
+  house:function(g){return `<g class="comp-maskg">
+    <path d="M60,49 C74,49 84,59 84,72 C84,85 74,94 60,94 C46,94 36,85 36,72 C36,59 46,49 60,49 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M43,60 q4,-6 8,0 M57,56 q4,-6 8,0 M71,60 q4,-6 8,0" stroke="${g}" stroke-opacity=".35" stroke-width="1.2" fill="none"/>
+    <circle cx="51" cy="71" r="4" fill="${g}" opacity=".62"/><circle cx="69" cy="71" r="4" fill="${g}" opacity=".62"/>
+    <path d="M53,82 q7,6 14,0" stroke="${g}" stroke-opacity=".32" stroke-width="1.2" fill="none"/></g>`;},
+  horse:function(g){return `<g class="comp-maskg">
+    <ellipse cx="60" cy="72" rx="22" ry="22.5" fill="#0d0708" stroke="${g}" stroke-opacity=".48" stroke-width="1"/>
+    <path d="M46,58 C52,62 52,74 46,86 M74,58 C68,62 68,74 74,86 M60,52 V92" stroke="${g}" stroke-opacity=".2" stroke-width=".8" fill="none"/>
+    <ellipse cx="51" cy="70" rx="4.4" ry="2.4" fill="${g}" opacity=".66"/>
+    <ellipse cx="69" cy="70" rx="4.4" ry="2.4" fill="${g}" opacity=".66"/></g>`;},
+  bread:function(g){return `<g class="comp-maskg">
+    <path d="M35,42 h50 v48 q-6,6 -12,1 q-7,8 -13,2 q-6,6 -12,1 q-7,4 -13,-2 z" fill="#0b0607" stroke="${g}" stroke-opacity=".4" stroke-width="1"/>
+    <path d="M47,64 h9 M64,64 h9" stroke="${g}" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+    <path d="M40,54 h40 M40,82 h40" stroke="${g}" stroke-opacity=".16" stroke-width=".8"/></g>`;},
+  walkie:function(g){return `<g class="comp-maskg">
+    <path d="M45,50 C53,44 67,44 75,50 L82,73 C84,84 73,90 60,90 C47,90 36,84 38,73 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M60,74 C66,78 74,82 81,85 C75,96 63,96 57,88 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".4" stroke-width=".9"/>
+    <path d="M48,66 l6,-3 M72,66 l-6,-3" stroke="${g}" stroke-opacity=".6" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="76" cy="83" r="1.6" fill="${g}" opacity=".7"/></g>`;},
+  bird:function(g){return `<g class="comp-maskg">
+    <path d="M60,50 C46,50 38,60 38,72 C38,84 48,91 60,91 C72,91 82,84 82,72 C82,60 74,50 60,50 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M60,68 L54,84 L60,88 L66,84 Z" fill="#0b0607" stroke="${g}" stroke-opacity=".4" stroke-width=".9"/>
+    <path d="M46,52 l3,-7 3,7 M56,50 l2,-8 3,8 M68,52 l-3,-7 -3,7" stroke="${g}" stroke-opacity=".28" stroke-width="1" fill="none"/>
+    <ellipse cx="50" cy="66" rx="4" ry="2.4" fill="${g}" opacity=".66"/>
+    <ellipse cx="70" cy="66" rx="4" ry="2.4" fill="${g}" opacity=".66"/></g>`;}
+};
+
+/* ===================== NPC 立绘：正常，但经不起细看 ===================== */
+const NPC_ART = {
+  guard:{tag:"园区保安", close:{
+      hint:"他站着，手电筒垂在腿边。",
+      detail:"他抬手时，袖口滑下去——那只手上只有三根手指，很匀地分开，像生来就是三根。",
+      note:"胸牌上的照片是空白的。帽子压得很低，眼睛只在帽檐下露出两点白。"}},
+  auntie:{tag:"饮食区摊主", close:{
+      hint:"她笑着，围裙上还沾着面粉。",
+      detail:"她笑着说话，牙齿是一整条白，没有缝。数一数，比一个人该有的多出两排。",
+      note:"托盘上还有一圈水渍，正好是一部手机的大小。"}},
+  stagehand:{tag:"场务", close:{
+      hint:"他背对着舞台，在对讲机里说着什么。",
+      detail:"他转过来看你，身体没有动。脖子还是直的，头却整整转了一百八十度。",
+      note:"对讲机贴在下巴上，位置比正常人低了两指。"}},
+  dj:{tag:"广播员", close:{
+      hint:"他隔着一层玻璃，正在播报。",
+      detail:"他的眼睛是闭着的——两条平直的线。麦克风后面的嘴，一直在动。",
+      note:"耳机线顺着脖子往下，末端埋进皮肤里。"}},
+  balloon:{tag:"气球摊", close:{
+      hint:"小孩抓着一把气球，仰头看你。",
+      detail:"他两只手都空着。气球绳从他袖口里长出来，一根一根，一直连到肘部以上。",
+      note:"眼睛是两个空洞，正中间各有一点白。"}},
+  gate:{tag:"检票员", close:{
+      hint:"他低头打孔，动作很熟练。",
+      detail:"他抬起头——不是脸。是一张纸，纸上打了一个孔，孔的位置正好是眼睛。",
+      note:"工牌照片上是他，但下巴多出半截。"}}
+};
+
+/* 统一的半身底稿：皮肤、制服、极简五官——先做出「正常」 */
+function npcBase(uid, o){
+  return `<defs>
+    <linearGradient id="${uid}s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${o.skin||'#a8806f'}"/><stop offset="1" stop-color="${o.skin2||'#5c4038'}"/></linearGradient>
+    <linearGradient id="${uid}c" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${o.cloth||'#2a3340'}"/><stop offset="1" stop-color="${o.cloth2||'#141a22'}"/></linearGradient>
+    <radialGradient id="${uid}l"><stop offset="0" stop-color="#ffd9b0" stop-opacity=".22"/><stop offset="1" stop-color="#ffd9b0" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="40" cy="60" rx="46" ry="56" fill="url(#${uid}l)"/>
+  <path d="M14,176 C14,142 38,122 70,122 C102,122 126,142 126,176 Z" fill="url(#${uid}c)" stroke="rgba(0,0,0,.5)" stroke-width="1"/>
+  <path d="M60,100 h20 v26 h-20 z" fill="url(#${uid}s)"/>
+  <ellipse cx="70" cy="74" rx="27" ry="31" fill="url(#${uid}s)"/>
+  <ellipse cx="43" cy="76" rx="4.5" ry="6.5" fill="url(#${uid}s)" opacity=".9"/>
+  <ellipse cx="97" cy="76" rx="4.5" ry="6.5" fill="url(#${uid}s)" opacity=".9"/>`;
+}
+
+const NPC_DRAW = {
+  guard:function(uid){
+    const o={skin:"#b08b78",skin2:"#5a3f36",cloth:"#28313d",cloth2:"#10161d"};
+    return npcBase(uid,o)+`
+    <path d="M44,52 C46,36 58,30 70,30 C82,30 94,36 96,52 Z" fill="#1b2430"/>
+    <path d="M38,52 h64 l-3,7 h-58 z" fill="#0d141c"/>
+    <path d="M48,66 h44 v4 h-44 z" fill="#5c3a2e" opacity=".25"/>
+    <path d="M52,66 q5,-2 9,0" stroke="#f6ece6" stroke-opacity=".55" stroke-width="1.6" fill="none"/>
+    <path d="M80,66 q4,-2 8,0" stroke="#f6ece6" stroke-opacity=".55" stroke-width="1.6" fill="none"/>
+    <path d="M62,88 q8,3 16,0" stroke="#3a2320" stroke-width="1.4" fill="none" opacity=".7"/>
+    <path d="M46,140 h30 v26 h-30 z" fill="#1b2430" stroke="#3d4a5c" stroke-width=".8"/>
+    <path d="M52,148 h18 v14 h-18 z" fill="#c9c2b8" opacity=".8"/>
+    <path d="M30,150 c6,0 10,4 10,10 v16" stroke="#2a3340" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <rect x="24" y="172" width="8" height="16" rx="3" fill="#3d4a5c"/>
+    <circle cx="28" cy="192" r="4" fill="#ffe9b0" opacity=".55"/>
+    <path d="M104,152 c8,2 12,8 10,16" stroke="#2a3340" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <circle cx="112" cy="176" r="3.4" fill="#b08b78"/>
+    <circle cx="117" cy="181" r="3.4" fill="#8f6d5e"/>`;
+  },
+  auntie:function(uid){
+    const o={skin:"#c19a86",skin2:"#6d4a3e",cloth:"#5a4448",cloth2:"#2a1c20"};
+    return npcBase(uid,o)+`
+    <path d="M46,44 C48,30 58,24 70,24 C82,24 92,30 94,44 C86,34 78,32 70,34 C62,32 54,34 46,44 Z" fill="#241a18"/>
+    <ellipse cx="70" cy="26" rx="11" ry="9" fill="#241a18"/>
+    <path d="M48,70 q6,-5 12,0" stroke="#4a2f28" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M80,70 q6,-5 12,0" stroke="#4a2f28" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M58,86 q12,8 24,0" stroke="#f4ece4" stroke-width="4" fill="none"/>
+    <path d="M60,86 v4 M65,87 v5 M70,88 v5 M75,87 v5 M80,86 v4" stroke="#7a5a52" stroke-width=".7"/>
+    <path d="M34,136 C34,150 46,156 70,156 C94,156 106,150 106,136 L118,176 H22 Z" fill="#e6ddd2" opacity=".82"/>
+    <path d="M30,150 h20" stroke="#b9a894" stroke-width="1"/>
+    <circle cx="92" cy="160" r="3.2" fill="#8b2b2b" opacity=".55"/>
+    <circle cx="86" cy="168" r="2" fill="#8b2b2b" opacity=".4"/>
+    <path d="M28,150 c-6,4 -6,12 2,14 h44" stroke="#cfc4b6" stroke-width="3" fill="none"/>
+    <ellipse cx="52" cy="164" rx="14" ry="4.5" fill="#3a2a26" opacity=".55"/>
+    <ellipse cx="52" cy="163" rx="9" ry="3" fill="#6d5560" opacity=".5"/>`;
+  },
+  stagehand:function(uid){
+    const o={skin:"#a87f6c",skin2:"#55392f",cloth:"#1f2733",cloth2:"#0d1219"};
+    return npcBase(uid,o)+`
+    <path d="M46,46 C48,34 58,28 70,28 C82,28 92,34 94,46 C86,38 78,36 70,38 C62,36 54,38 46,46 Z" fill="#191413"/>
+    <path d="M50,72 q6,-4 11,0" stroke="#3f2a24" stroke-width="1.8" fill="none"/>
+    <path d="M78,72 q6,-4 11,0" stroke="#3f2a24" stroke-width="1.8" fill="none"/>
+    <path d="M74,80 q3,6 -1,7" stroke="#7c5a4c" stroke-width="1.4" fill="none"/>
+    <path d="M64,92 q8,3 15,-1" stroke="#3f2a24" stroke-width="1.5" fill="none" opacity=".8"/>
+    <path d="M40,128 h60 v12 h-60 z" fill="#3a4452" opacity=".8"/>
+    <path d="M40,140 h60 v8 h-60 z" fill="#c8b04a" opacity=".45"/>
+    <path d="M100,130 h16 v22 h-16 z" rx="3" fill="#161c24" stroke="#3d4a5c" stroke-width=".8"/>
+    <path d="M108,130 v-14" stroke="#3d4a5c" stroke-width="2"/>
+    <circle cx="108" cy="140" r="2.4" fill="#c04a4a"/>
+    <path d="M44,120 c-8,10 -10,26 -6,40" stroke="#0d1219" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  },
+  dj:function(uid){
+    const o={skin:"#ad8674",skin2:"#5a3d33",cloth:"#20262b",cloth2:"#0c1013"};
+    return npcBase(uid,o)+`
+    <path d="M46,44 C50,32 60,26 70,26 C80,26 90,32 94,44 C86,36 78,34 70,36 C62,34 54,36 46,44 Z" fill="#1a1512"/>
+    <path d="M52,72 h12 M78,72 h12" stroke="#3d2822" stroke-width="2.2" stroke-linecap="round"/>
+    <rect x="34" y="62" width="12" height="26" rx="6" fill="#11161a" stroke="#3a4750" stroke-width=".8"/>
+    <rect x="96" y="62" width="12" height="26" rx="6" fill="#11161a" stroke="#3a4750" stroke-width=".8"/>
+    <path d="M46,60 C52,50 62,48 70,48" stroke="#2b3439" stroke-width="4" fill="none"/>
+    <ellipse cx="70" cy="94" rx="11" ry="9" fill="#2a3238" stroke="#4a5a62" stroke-width=".9"/>
+    <path d="M70,103 v22" stroke="#4a5a62" stroke-width="2.4"/>
+    <path d="M60,74 c2,4 6,6 10,6" stroke="#2b3439" stroke-width="3" fill="none"/>
+    <ellipse cx="84" cy="90" rx="4" ry="3" fill="#7c5350" opacity=".6"/>
+    <path d="M34,74 c-2,20 0,34 4,44" stroke="#2b3439" stroke-width="2" fill="none"/>
+    <path d="M106,74 c2,20 0,34 -4,44" stroke="#2b3439" stroke-width="2" fill="none"/>
+    <rect x="24" y="150" width="92" height="26" rx="3" fill="#10161a" stroke="#2d3a42" stroke-width=".8"/>
+    <path d="M34,158 h14 M54,158 h14 M74,158 h14" stroke="#4a5a62" stroke-width="2"/>`;
+  },
+  balloon:function(uid){
+    const o={skin:"#b98f7c",skin2:"#5f4038",cloth:"#3a2a34",cloth2:"#1a1218"};
+    return npcBase(uid,o)+`
+    <ellipse cx="70" cy="70" rx="30" ry="32" fill="url(#${uid}s)"/>
+    <path d="M42,52 C46,38 58,32 70,32 C82,32 94,38 98,52 C88,42 78,40 70,42 C62,40 52,42 42,52 Z" fill="#1d1714"/>
+    <circle cx="58" cy="72" r="5" fill="#120c0a"/><circle cx="82" cy="72" r="5" fill="#120c0a"/>
+    <circle cx="59.4" cy="70.4" r="1.3" fill="#f2e6e0" opacity=".85"/>
+    <circle cx="83.4" cy="70.4" r="1.3" fill="#f2e6e0" opacity=".85"/>
+    <path d="M62,92 q8,4 16,0" stroke="#4a2f2a" stroke-width="1.4" fill="none"/>
+    <circle cx="34" cy="34" r="12" fill="#8a3a44" opacity=".8"/>
+    <circle cx="50" cy="18" r="10" fill="#4a5a76" opacity=".8"/>
+    <circle cx="86" cy="16" r="11" fill="#6a4a6e" opacity=".8"/>
+    <circle cx="104" cy="36" r="12" fill="#7a6a3a" opacity=".8"/>
+    <path d="M34,46 C36,90 44,120 46,140 M50,28 C52,70 54,110 54,138 M86,27 C82,70 76,110 74,138 M104,48 C98,84 90,116 88,140"
+      stroke="#d8c8c0" stroke-opacity=".45" stroke-width=".9" fill="none"/>
+    <path d="M44,138 c-2,6 -2,10 2,12 M52,136 c-2,6 -2,10 2,12 M74,136 c2,6 2,10 -2,12 M88,138 c2,6 2,10 -2,12"
+      stroke="#c9a89c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M30,146 c10,-6 26,-8 40,-6" stroke="#c9a89c" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>`;
+  },
+  gate:function(uid){
+    const o={skin:"#cfc6bd",skin2:"#8e8378",cloth:"#2a3441",cloth2:"#12181f"};
+    return npcBase(uid,o)+`
+    <path d="M44,50 C48,36 58,32 70,32 C82,32 92,36 96,50 Z" fill="#1c2531"/>
+    <path d="M38,50 h64 l-2,6 h-60 z" fill="#0d141c"/>
+    <ellipse cx="70" cy="76" rx="26" ry="30" fill="#e4ded6" stroke="#b8b0a6" stroke-width=".8"/>
+    <ellipse cx="58" cy="72" rx="5" ry="5.5" fill="#0a0608"/>
+    <ellipse cx="82" cy="72" rx="5" ry="5.5" fill="#0a0608"/>
+    <path d="M60,92 q10,3 20,0" stroke="#a89c90" stroke-width="1" fill="none" opacity=".6"/>
+    <path d="M44,58 q26,-6 52,0" stroke="#fff" stroke-opacity=".18" stroke-width="1"/>
+    <rect x="92" y="128" width="26" height="18" rx="3" fill="#c9c2b8" opacity=".85" transform="rotate(-6 105 137)"/>
+    <rect x="96" y="132" width="8" height="10" fill="#8e8378" opacity=".8"/>
+    <path d="M22,150 c8,2 12,10 12,20" stroke="#2a3441" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M30,168 l14,-4 4,10 -14,4 z" fill="#3d4a5c"/>
+    <circle cx="40" cy="170" r="2.6" fill="#0a0608"/>
+    <rect x="56" y="140" width="28" height="20" fill="#1b2430" stroke="#3d4a5c" stroke-width=".7"/>
+    <path d="M62,146 h16 v8 h-16 z" fill="#d8d0c6" opacity=".75"/>`;
+  }
+};
+
+function npcSVG(npcId, cls){
+  const d = NPC_DRAW[npcId];
+  if(!d) return "";
+  const uid = "np" + (++COMP_UID);
+  return `<svg viewBox="0 0 140 176" class="npc-svg ${cls||""}" preserveAspectRatio="xMidYMax meet" aria-hidden="true">${d(uid)}</svg>`;
+}
+
+function npcLine(npcId){
+  const a = NPC_ART[npcId];
+  return a ? a.tag : "园区工作人员";
+}
+
+/* NPC 近看：先给你看一张正常的脸，两秒后再说清楚哪里不对 */
+function openNpcCloseup(npcId){
+  const a = NPC_ART[npcId];
+  const n = (NPCS.find(function(x){return x.id===npcId;})||{}).name || "他";
+  if(!a) return;
+  const old = document.getElementById("npcClose");
+  if(old) old.remove();
+  const wrap = document.createElement("div");
+  wrap.className = "npc-close-ov";
+  wrap.id = "npcClose";
+  wrap.innerHTML = `<div class="npc-close-card">
+    <div class="npc-close-art">${npcSVG(npcId)}<div class="npc-close-mark"></div></div>
+    <div class="npc-close-name">${esc(n)}<span>· ${esc(a.tag)}</span></div>
+    <div class="npc-close-txt" id="npcCloseTxt">${esc(a.close.hint)}</div>
+    <div class="npc-close-acts">
+      <button class="nc-btn" id="npcCloseMore" onclick="npcCloseReveal('${npcId}')">再靠近一点看</button>
+      <button class="nc-btn ghost" onclick="closeNpcCloseup()">不看了</button>
+    </div>
+  </div>`;
+  document.getElementById("app").appendChild(wrap);
+  if(typeof playUiSfx==="function") playUiSfx("map");
+}
+
+function npcCloseReveal(npcId){
+  const a = NPC_ART[npcId];
+  const card = document.querySelector("#npcClose .npc-close-card");
+  const txt = document.getElementById("npcCloseTxt");
+  const btn = document.getElementById("npcCloseMore");
+  if(!a || !card) return;
+  if(card.classList.contains("reveal")) return;
+  card.classList.add("reveal");
+  if(txt) txt.innerHTML = `<b>${esc(a.close.detail)}</b><br><span class="npc-note">${esc(a.close.note)}</span>`;
+  if(btn) btn.textContent = "记下这一眼";
+  if(btn) btn.setAttribute("onclick","npcCloseRecord('"+npcId+"')");
+  S.flags.anomaliesSeen = (S.flags.anomaliesSeen||0)+1;
+  if(typeof playScareSting==="function"){ try{ playScareSting(); }catch(e){} }
+}
+
+function npcCloseRecord(npcId){
+  const a = NPC_ART[npcId];
+  const n = (NPCS.find(function(x){return x.id===npcId;})||{}).name || "NPC";
+  if(a) addRecord("NPC · " + n, a.close.detail + "\n" + a.close.note);
+  if(a) addKeyword(npcId === "balloon" ? "袖口里的气球线" : (n + "·不对劲"));
+  S.flags.npcLooked = S.flags.npcLooked || {};
+  S.flags.npcLooked[npcId] = true;
+  closeNpcCloseup();
+  toast("已记入记录");
+}
+
+function closeNpcCloseup(){
+  const el = document.getElementById("npcClose");
+  if(el) el.remove();
+}
+
+/* ===================== 聊天头像：有公式照就用照片，没有就用假面 ===================== */
+function faceSVG(cid){
+  return companionSVG(cid, "comp-face", "16 42 88 88");
+}
+function avatarHTML(cid, size){
+  const s = size || 48;
+  return `<div class="face-slot" style="width:${s}px;height:${s}px">
+    ${faceSVG(cid)}
+    <img class="face-img" src="./avatars/${cid}.jpg" alt="" loading="lazy"
+      onload="this.classList.add('on')" onerror="this.remove()">
+  </div>`;
+}
+
+function companionDockHTML(zid){
+  const c = companionChar();
+  if(!c){
+    return `<button class="comp-empty" onclick="openCompanionPicker('${zid}')">
+      <span class="ce-plus">＋</span>
+      <span class="ce-txt">叫上一个人陪你探查<em>他会走在你侧后方，替你看另一边</em></span>
+    </button>`;
+  }
+  const a = COMP_ART[c.id] || {mask:""};
+  const kind = compKind(zid);
+  const eerie = compIsEerie();
+  const line = compLine(c.id, kind);
+  const extra = eerie ? `<br><i class="comp-glitch">${esc(compGlitchLine())}</i>` : "";
+  return `<div class="comp-dock ${eerie?"eerie":""} ${kind==="fear"?"fear":""}">
+    <div class="comp-art" onclick="companionSay('${zid}')">${companionSVG(c.id)}</div>
+    <div class="comp-talk">
+      <div class="comp-name"><b>${c.name}</b><span class="comp-mask">· ${esc(a.mask||"")}</span>
+        <span class="comp-tag">${kind==="home"?"他熟这儿":kind==="fear"?"他不太想来":"同行"}</span></div>
+      <div class="comp-line" id="compLine">${esc(line)}${extra}</div>
+      <div class="comp-acts">
+        <button class="chip" onclick="companionSay('${zid}')">让他说点什么</button>
+        <button class="chip" onclick="openCompanionPicker('${zid}')">换人</button>
+        <button class="chip" onclick="dismissCompanion()">让他留在原地</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function companionSay(zid){
+  const c = companionChar();
+  if(!c) return;
+  const el = document.getElementById("compLine");
+  if(!el) return;
+  const kind = compKind(zid||S.currentZone);
+  let html = esc(compLine(c.id, kind));
+  if(compIsEerie() && Math.random()<0.35) html += `<br><i class="comp-glitch">${esc(compGlitchLine())}</i>`;
+  el.style.opacity = "0";
+  setTimeout(function(){ el.innerHTML = html; el.style.opacity = "1"; },120);
+  if(typeof playUiSfx==="function") playUiSfx("tap");
+}
+
+function dismissCompanion(){
+  const c = companionChar();
+  S.companion = null;
+  toast(c ? c.name+" 留在原地了" : "已经没人跟着你");
+  renderArea(S.currentZone);
+}
+
+function openCompanionPicker(zid){
+  const zidSafe = zid || S.currentZone;
+  const z = ZONES.find(function(x){return x.id===zidSafe;}) || {name:"园区"};
+  const rows = CHARS.map(function(c){
+    const a = COMP_ART[c.id] || {mask:""};
+    const cz = COMP_ZONES[c.id] || {};
+    const fear = (cz.fear||[]).indexOf(zidSafe)>=0;
+    const home = (cz.home||[]).indexOf(zidSafe)>=0;
+    const tag = fear ? `<span class="ptag no">他犹豫</span>` : home ? `<span class="ptag yes">他熟这儿</span>` : `<span class="ptag">可以</span>`;
+    const sel = S.companion===c.id ? "sel" : "";
+    const pv = compLine(c.id, fear?"fear":"enter");
+    return `<button class="pick-row ${sel}" onclick="pickCompanion('${c.id}','${zidSafe}')">
+      <div class="pick-art">${companionSVG(c.id)}</div>
+      <div class="pick-txt">
+        <div class="pick-name">${c.name}<span>· ${esc(a.mask||"")}</span></div>
+        <div class="pick-line">${esc(pv)}</div>
+      </div>${tag}</button>`;
+  }).join("");
+  const wrap = document.createElement("div");
+  wrap.className = "pick-ov";
+  wrap.id = "compPicker";
+  wrap.innerHTML = `<div class="pick-sheet">
+    <div class="pick-head">
+      <div><div class="pick-kicker">COMPANION</div>
+        <h3>谁陪你走这一趟</h3></div>
+      <button class="pick-x" onclick="closeCompanionPicker()">✕</button>
+    </div>
+    <p class="pick-note">${esc(z.name)} · 他会站在你侧后方。人眼看不见的东西，他有时先看见；也有些不属于他的东西，会跟着他一起过来。</p>
+    <div class="pick-list">${rows}</div>
+    <button class="btn ghost" onclick="pickCompanion('','${zidSafe}')">一个人去（不带任何人）</button>
+  </div>`;
+  document.getElementById("app").appendChild(wrap);
+}
+
+function closeCompanionPicker(){
+  const el = document.getElementById("compPicker");
+  if(el) el.remove();
+}
+
+function pickCompanion(cid, zid){
+  const zidSafe = zid || S.currentZone;
+  closeCompanionPicker();
+  S.companion = cid || null;
+  if(cid){
+    const c = CHARS.find(function(x){return x.id===cid;});
+    const kind = compKind(zidSafe);
+    if(kind==="fear"){
+      S.flags.anomaliesSeen = (S.flags.anomaliesSeen||0) + 1;
+      toast(c.name+" 跟了过来，但一路没说话");
+    } else {
+      toast(c.name+" 跟在你侧后方");
+    }
+  }
+  renderArea(zidSafe);
+}
+
+/* 相机页右下角的小窗：取景框里也拍得到他 */
+function companionCamHTML(){
+  const c = companionChar();
+  if(!c) return "";
+  const a = COMP_ART[c.id] || {mask:""};
+  return `<div class="cam-comp" onclick="companionSay('${S.currentZone}')">
+    ${companionSVG(c.id)}
+    <span class="cam-comp-cap">${c.name}</span>
+  </div>`;
+}
+
 function renderArea(zid){
   const z=ZONES.find(x=>x.id===zid);
   const screen=document.getElementById("screen");
@@ -5125,6 +5855,7 @@ function renderArea(zid){
     <button class="back-btn" onclick="S.tab='map';render()">← 地图</button>
     <div class="day-badge">${z.name} · D${S.day} ${realTime()}</div>
     ${bg}
+    ${companionDockHTML(zid)}
     <div class="card"><p style="line-height:1.75;font-size:14px">${esc(txt)}</p>
     <p class="ambient">环境：${ambientSound(zid)}</p></div>
     ${(()=>{
@@ -5135,8 +5866,13 @@ function renderArea(zid){
       if(npc){
         if(!S.flags.npcMet) S.flags.npcMet=[];
         if(!S.flags.npcMet.includes(npc.name)) S.flags.npcMet.push(npc.name);
-        npcHtml+=`<div class="card"><span class="npc-chip">NPC · ${esc(npc.name)}</span><p style="margin:6px 0 0;line-height:1.65;font-size:13px">${esc(npc.line)}</p>
-          <button class="chip" onclick="addRecord('NPC·${esc(npc.name)}',${JSON.stringify(npc.line)});toast('已记入')">记入笔记</button></div>`;
+        npcHtml+=`<div class="card"><span class="npc-chip">NPC · ${esc(npc.name)}</span>
+          <div class="npc-card">
+            <div class="npc-art" onclick="openNpcCloseup('${npc.id}')">${npcSVG(npc.id)}</div>
+            <p style="margin:0;line-height:1.65;font-size:13px;flex:1">${esc(npc.line)}</p>
+          </div>
+          <button class="chip" onclick="addRecord('NPC·${esc(npc.name)}',${JSON.stringify(npc.line)});toast('已记入')">记入笔记</button>
+          <button class="chip" onclick="openNpcCloseup('${npc.id}')">再靠近一点看</button></div>`;
       }
       if(typeof questPanelHtml==="function") npcHtml+=questPanelHtml(zid);
       if(typeof hasItem==="function" && hasItem("wipe") && zid==="food")
@@ -5951,7 +6687,7 @@ function renderChatList(){
   CHARS.forEach(c=>{
     const log=S.chatLog[c.id]||[];
     if(!log.length){
-      html+=`<div class="chat-row" style="opacity:.38"><div class="avatar" style="background:#333">${c.emoji}</div><div class="chat-meta"><div class="name">${c.name}</div><div class="prev">还没出现</div></div></div>`;
+      html+=`<div class="chat-row" style="opacity:.38"><div class="avatar" style="background:#333">${avatarHTML(c.id,44)}</div><div class="chat-meta"><div class="name">${c.name}</div><div class="prev">还没出现</div></div></div>`;
       return;
     }
     const last=log[log.length-1];
@@ -5960,7 +6696,7 @@ function renderChatList(){
     const stClass=st==="异常"?"st-abnormal":st==="不稳定"?"st-unstable":st==="沉默"?"st-silent":"st-ok";
     const ur=S.unread[c.id]||0;
     html+=`<button class="chat-row" onclick="openChat('${c.id}')">
-      <div class="avatar" style="background:${c.color}">${c.emoji}
+      <div class="avatar" style="background:${c.color}">${avatarHTML(c.id,48)}
         ${st?`<span class="status-strip ${stClass}">${st}</span>`:""}
       </div>
       <div class="chat-meta">
@@ -6018,7 +6754,7 @@ function renderChat(cid){
   document.getElementById("screen").innerHTML=`
     <div class="chat-header">
       <button class="back-btn" onclick="S.chatWith=null;S.tab='chat';render()">←</button>
-      <div class="avatar" style="background:${c.color};width:36px;height:36px;font-size:14px">${c.emoji}</div>
+      <div class="avatar" style="background:${c.color};width:36px;height:36px">${avatarHTML(c.id,36)}</div>
       <div><b>${c.name}</b><div class="muted">阶段 ${["前期","中期","后期"][ph]} · 关注 ${S.attention[cid]||0}</div></div>
     </div>
     <div class="bubbles">${bubbles}</div>
@@ -6193,6 +6929,7 @@ function openCamera(zid){
         <div class="cam-frame"></div>
         <div class="cam-scan"></div>
         ${ghosts.map((g,i)=>`<button class="cam-ghost" id="gh${i}" style="left:${g.x}%;top:${g.y}%" onclick="shootGhost('${zid}',${i})"></button>`).join("")}
+        ${companionCamHTML()}
       </div>
       <div class="cam-note" id="camNote">正在对焦……画面比肉眼亮一点。</div>
     </div>
@@ -6407,7 +7144,10 @@ window.onload=()=>{
 };
 </script>
 <script>
-
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
 }
 document.addEventListener("gesturestart", function (e) { e.preventDefault(); }, { passive: false });
 </script>
